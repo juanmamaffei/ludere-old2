@@ -28,7 +28,7 @@ class MisionsController < ApplicationController
 
     respond_to do |format|
       if @mision.save
-        format.html { redirect_to @mision, notice: 'Mision was successfully created.' }
+        format.html { redirect_to @mision, notice: 'La misión se creó correctamente.' }
         format.json { render :show, status: :created, location: @mision }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MisionsController < ApplicationController
   def update
     respond_to do |format|
       if @mision.update(mision_params)
-        format.html { redirect_to @mision, notice: 'Mision was successfully updated.' }
+        format.html { redirect_to @mision, notice: 'La misión se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @mision }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MisionsController < ApplicationController
   def destroy
     @mision.destroy
     respond_to do |format|
-      format.html { redirect_to misions_url, notice: 'Mision was successfully destroyed.' }
+      format.html { redirect_to misions_url, notice: 'La misión se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end

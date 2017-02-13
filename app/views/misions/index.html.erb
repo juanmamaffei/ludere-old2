@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Misions</h1>
+<h1>¡Hay misiones que cumplir!</h1>
 
 <table>
   <thead>
@@ -28,9 +28,9 @@
         <td><%= mision.comentario %></td>
         <td><%= mision.habilitado %></td>
         <td><%= mision.visible %></td>
-        <td><%= link_to 'Show', mision %></td>
-        <td><%= link_to 'Edit', edit_mision_path(mision) %></td>
-        <td><%= link_to 'Destroy', mision, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '¡Dar un vistazo!', mision %></td>
+        <td><%= link_to 'Editar', edit_mision_path(mision) %></td>
+        <td><%= link_to 'Eliminar', mision, method: :delete, data: { confirm: '¿Estás seguro que querés eliminar esta misión?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Mision', new_mision_path %>
+<%= link_to 'Crear nueva misión', new_mision_path, :class =>"btn btn-default" %>

@@ -1,4 +1,4 @@
-<%= form_for(objetivo) do |f| %>
+<%= form_for([@mision, objetivo]) do |f| %>
   <% if objetivo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(objetivo.errors.count, "error") %> prohibited this objetivo from being saved:</h2>
@@ -11,37 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :mision_id %>
-    <%= f.number_field :mision_id %>
+  
+
+  <div class="input-group">
+   <span class="input-group-addon">Nombre del objetivo</span> 
+    <%= f.text_field :nombre, :class => "form-control " %>
   </div>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
+  <div class="input-group">
+   <span class="input-group-addon">Descripción</span>
+    <%= f.text_field :descripcion, :class => "form-control " %>
   </div>
 
-  <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_field :descripcion %>
+  <div class="input-group">
+   <span class="input-group-addon">URL del video</span>
+    <%= f.text_field :urlvideo, :class => "form-control " %>
   </div>
 
-  <div class="field">
-    <%= f.label :urlvideo %>
-    <%= f.text_field :urlvideo %>
+  <div class="input-group">
+   <span class="input-group-addon">Instructivo</span>
+    <%= f.text_area :instructivo, :class => "form-control " %>
   </div>
 
-  <div class="field">
-    <%= f.label :instructivo %>
-    <%= f.text_area :instructivo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :urlevaluativo %>
-    <%= f.text_field :urlevaluativo %>
+  <div class="input-group">
+   <span class="input-group-addon">URL de evaluación</span>
+    <%= f.text_field :urlevaluativo, :class => "form-control " %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear", :class => "btn btn-primary"%>
   </div>
+
 <% end %>

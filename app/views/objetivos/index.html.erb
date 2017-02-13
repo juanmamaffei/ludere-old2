@@ -24,9 +24,7 @@
         <td><%= objetivo.urlvideo %></td>
         <td><%= objetivo.instructivo %></td>
         <td><%= objetivo.urlevaluativo %></td>
-        <td><%= link_to 'Show', objetivo %></td>
-        <td><%= link_to 'Edit', edit_objetivo_path(objetivo) %></td>
-        <td><%= link_to 'Destroy', objetivo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Objetivo', new_objetivo_path %>
+<%= link_to 'Nuevo OBJETIVO para esta misión', new_mision_objetivo_path %>

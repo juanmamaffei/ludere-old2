@@ -1,7 +1,6 @@
 class ObjetivosController < ApplicationController
   before_action :set_objetivo, only: [:show, :edit, :update, :destroy]
-
-  # GET /objetivos
+  before_action :set_mision  # GET /objetivos
   # GET /objetivos.json
   def index
     @objetivos = Objetivo.all
@@ -25,14 +24,15 @@ class ObjetivosController < ApplicationController
   # POST /objetivos.json
   def create
     @objetivo = Objetivo.new(objetivo_params)
+    @objetivo.mision= @mision
 
     respond_to do |format|
       if @objetivo.save
-        format.html { redirect_to @objetivo, notice: 'Objetivo was successfully created.' }
-        format.json { render :show, status: :created, location: @objetivo }
+        format.html { redirect_to [@mision, @objetivo], notice: 'Objetivo was successfully created.' }
+        format.json { render :show, status: :created, location: [@mision, @objetivo] }
       else
         format.html { render :new }
-        format.json { render json: @objetivo.errors, status: :unprocessable_entity }
+        format.json { render json: [@mision, @objetivo].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +42,11 @@ class ObjetivosController < ApplicationController
   def update
     respond_to do |format|
       if @objetivo.update(objetivo_params)
-        format.html { redirect_to @objetivo, notice: 'Objetivo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @objetivo }
+        format.html { redirect_to [@mision, @objetivo], notice: 'Objetivo was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@mision, @objetivo] }
       else
         format.html { render :edit }
-        format.json { render json: @objetivo.errors, status: :unprocessable_entity }
+        format.json { render json: [@mision, @objetivo].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,12 +56,15 @@ class ObjetivosController < ApplicationController
   def destroy
     @objetivo.destroy
     respond_to do |format|
-      format.html { redirect_to objetivos_url, notice: 'Objetivo was successfully destroyed.' }
+      format.html { redirect_to mision_objetivos_url, notice: 'Objetivo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_mision
+    @mision = Mision.find(params[:mision_id])
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_objetivo
       @objetivo = Objetivo.find(params[:id])
