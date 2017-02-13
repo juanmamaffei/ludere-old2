@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mision:</strong>
+  <%= @objetivo.mision_id %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @objetivo.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @objetivo.descripcion %>
+</p>
+
+<p>
+  <strong>Urlvideo:</strong>
+  <%= @objetivo.urlvideo %>
+</p>
+
+<p>
+  <strong>Instructivo:</strong>
+  <%= @objetivo.instructivo %>
+</p>
+
+<p>
+  <strong>Urlevaluativo:</strong>
+  <%= @objetivo.urlevaluativo %>
+</p>
+
+<%= link_to 'Edit', edit_objetivo_path(@objetivo) %> |
+<%= link_to 'Back', objetivos_path %>

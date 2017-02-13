@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<!-- Fuentes de íconos:
+  Glyph: http://getbootstrap.com/components/
+  FontAwesome: http://fontawesome.io/icons/
+-->
+  <head>
+    <title>Ludere</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <%= render "partials/menu" %>
+  	<div class="container">
+    <div class="panel panel-info">
+  <div class="panel-body">
+    Contenido del panel
+  
+    	<%= yield %></div></div>
+    </div>
+  </body>
+</html>

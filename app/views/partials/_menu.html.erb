@@ -1,0 +1,104 @@
+  <nav class="navbar navbar-inverse" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to("Ludere", misions_path, :class => "navbar-brand") %>
+
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+   
+
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks" aria-hidden="true"></i></span> Misiones<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">
+            
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Buscar">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
+
+          </a></li>
+          <li><a href="#">Acción #2</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #5</a></li>
+        </ul>
+      </li>
+
+
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users" aria-hidden="true"></i> Grupos<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">
+            
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Buscar">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
+
+          </a></li>
+          <li><a href="#">Acción #2</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #5</a></li>
+        </ul>
+      </li>
+
+
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-trophy" aria-hidden="true"></i> Logros<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Acción #1</a></li>
+          <li><a href="#">Acción #2</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+          <li class="divider"></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </li>
+    </ul>
+ 
+    
+ 
+   <!-- Iniciar sesión o mostrar menú de navegación privado -->
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> Menú<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="fa fa-inbox" aria-hidden="true"></i> Bandeja de entrada <span class="badge">3</span></a></li>
+          <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> Nuevo mensaje</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-shield" aria-hidden="true"></i> Tutores</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Perfil</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

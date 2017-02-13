@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  nivel: MyString
+  descripcion: MyText
+  urltemario: MyString
+  urlimagen: MyString
+  comentario: MyString
+  habilitado: false
+  visible: false
+
+two:
+  nombre: MyString
+  nivel: MyString
+  descripcion: MyText
+  urltemario: MyString
+  urlimagen: MyString
+  comentario: MyString
+  habilitado: false
+  visible: false

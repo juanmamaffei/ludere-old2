@@ -1,0 +1,47 @@
+<%= form_for(objetivo) do |f| %>
+  <% if objetivo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(objetivo.errors.count, "error") %> prohibited this objetivo from being saved:</h2>
+
+      <ul>
+      <% objetivo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mision_id %>
+    <%= f.number_field :mision_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :urlvideo %>
+    <%= f.text_field :urlvideo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instructivo %>
+    <%= f.text_area :instructivo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :urlevaluativo %>
+    <%= f.text_field :urlevaluativo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

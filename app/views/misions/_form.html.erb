@@ -1,0 +1,57 @@
+<%= form_for(mision) do |f| %>
+  <% if mision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mision.errors.count, "error") %> prohibited this mision from being saved:</h2>
+
+      <ul>
+      <% mision.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nivel %>
+    <%= f.text_field :nivel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :urltemario %>
+    <%= f.text_field :urltemario %>
+  </div>
+
+  <div class="field">
+    <%= f.label :urlimagen %>
+    <%= f.text_field :urlimagen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comentario %>
+    <%= f.text_field :comentario %>
+  </div>
+
+  <div class="field">
+    <%= f.label :habilitado %>
+    <%= f.check_box :habilitado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :visible %>
+    <%= f.check_box :visible %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

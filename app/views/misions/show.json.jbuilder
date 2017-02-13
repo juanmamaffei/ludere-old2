@@ -1,0 +1,1 @@
+json.partial! "misions/mision", mision: @mision

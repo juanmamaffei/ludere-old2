@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Objetivos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mision</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Urlvideo</th>
+      <th>Instructivo</th>
+      <th>Urlevaluativo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @objetivos.each do |objetivo| %>
+      <tr>
+        <td><%= objetivo.mision_id %></td>
+        <td><%= objetivo.nombre %></td>
+        <td><%= objetivo.descripcion %></td>
+        <td><%= objetivo.urlvideo %></td>
+        <td><%= objetivo.instructivo %></td>
+        <td><%= objetivo.urlevaluativo %></td>
+        <td><%= link_to 'Show', objetivo %></td>
+        <td><%= link_to 'Edit', edit_objetivo_path(objetivo) %></td>
+        <td><%= link_to 'Destroy', objetivo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Objetivo', new_objetivo_path %>
