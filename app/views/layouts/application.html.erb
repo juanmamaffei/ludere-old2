@@ -12,17 +12,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-
+  <div class="container" style="margin-top:50px">
   <body>
     <%= render "partials/menu" %>
-  	<div class="container">
-    <%  unless notice == nil %><div class="alert alert-info"><%= notice %></div><% end %>
+  	<%  unless notice == nil %><div class="alert alert-info"><%= notice %></div><% end %>
     <%  unless alert == nil %><div class="alert alert-warning"><%= alert %></div><% end %>
-    <div class="panel panel-info">
-  <div class="panel-body">
-    Contenido del panel
+ 
   
-    	<%= yield %></div></div>
-    </div>
+    	<%= yield %></div>
+    
   </body>
 </html>

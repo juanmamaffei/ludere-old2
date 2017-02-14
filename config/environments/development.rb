@@ -55,4 +55,7 @@ Rails.application.configure do
 
   #Para el devise. CUANDO PASE A PRODUCCIÓN, EN VEZ DE LOCALHOST SE DEBERÁ DEFINIR EL HOST DE LA APLICACIÓN
    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+   # Para PaperClip
+   Paperclip.options[:command_path] = 'C:\WINDOWS\system32\convert.EXE'
 end

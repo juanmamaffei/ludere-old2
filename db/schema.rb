@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213215646) do
+ActiveRecord::Schema.define(version: 20170214092431) do
 
   create_table "misions", force: :cascade do |t|
     t.string   "nombre"
@@ -21,8 +21,12 @@ ActiveRecord::Schema.define(version: 20170213215646) do
     t.string   "comentario"
     t.boolean  "habilitado"
     t.boolean  "visible"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "objetivos", force: :cascade do |t|

@@ -1,5 +1,5 @@
 
-<%= form_for(mision) do |f| %>
+<%= form_for mision, html: { multipart: true } do |f| %>
   <% if mision.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(mision.errors.count, "error") %> prohibited this mision from being saved:</h2>
@@ -18,8 +18,13 @@
   </div>
 
   <div class="input-group">
-   <span class="input-group-addon">Nombre de la misión</span>
+   <span class="input-group-addon">Nivel</span>
     <%= f.text_field :nivel, :class => "form-control "  %>
+  </div>
+
+  <div class="input-group">
+   <span class="input-group-addon">Imagen</span>
+    <%= f.file_field :image, :class => "form-control "  %>
   </div>
 
   <div class="input-group">

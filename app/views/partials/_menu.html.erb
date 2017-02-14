@@ -1,6 +1,7 @@
-  <nav class="navbar navbar-inverse" role="navigation">
+ <div id="container-fluid"> <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
+  
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse"
             data-target=".navbar-ex1-collapse">
@@ -33,12 +34,11 @@
 
 
           </a></li>
-          <li><a href="#">Acción #2</a></li>
-          <li><a href="#">Acción #3</a></li>
+          <li><a href="#">Explorar misiones</a></li>
           <li class="divider"></li>
-          <li><a href="#">Acción #4</a></li>
+          <li><a href="#">Mis misiones</a></li>
           <li class="divider"></li>
-          <li><a href="#">Acción #5</a></li>
+          <li><a href="#">Misiones de mis grupos</a></li>
         </ul>
       </li>
 
@@ -58,26 +58,24 @@
 
 
           </a></li>
-          <li><a href="#">Acción #2</a></li>
-          <li><a href="#">Acción #3</a></li>
+          <li><a href="#">Explorar grupos abiertos</a></li>
+          <li><a href="#">Crear nuevo grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Acción #4</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Acción #5</a></li>
+          <!-- Hacer un bucle y repetir la siguiente línea con cada uno de los grupos del usuario -->
+          <li><a href="#">Mi grupo 1</a></li>
+        
         </ul>
       </li>
 
 
 
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-trophy" aria-hidden="true"></i> Logros<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-trophy" aria-hidden="true"></i> Logros <span class="badge">5</span><b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Acción #1</a></li>
-          <li><a href="#">Acción #2</a></li>
-          <li><a href="#">Acción #3</a></li>
+          <li><a href="#">Logros globales</a></li>
+          <li><a href="#">Logros de mis grupos <span class="badge">3</span></a></li>
           <li class="divider"></li>
-          <li><a href="#">Acción #4</a></li>
-          <li class="divider"></li>
+          <li><a href="#">Mis logros<span class="badge"> 2</span></a></li>
           <li><a href="#"></a></li>
         </ul>
       </li>
@@ -86,8 +84,9 @@
     
  
    <!-- Iniciar sesión o mostrar menú de navegación privado -->
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" style="padding-right:10px">
       <li class="dropdown">
+      <% if usuario_signed_in? %>
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> Menú<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -96,9 +95,16 @@
           <li class="divider"></li>
           <li><a href="#"><i class="fa fa-shield" aria-hidden="true"></i> Tutores</a></li>
           <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Perfil</a></li>
+          <li><%= link_to content_tag(:i, " ", class: "fa fa-user")+" Perfil", edit_usuario_registration_path %></li>
+          <li><%= link_to content_tag(:i, " ", class: "fa fa-times-circle")+" Cerrar sesión", destroy_usuario_session_path, method: :delete %></li>
         </ul>
+      <% else %>
+          <%= link_to content_tag(:i, " ", class: "fa fa-user")+ " Entrar", new_usuario_session_path %>
+
+         <% end %>
+
+
       </li>
     </ul>
   </div>
-</nav>
+</nav></div>
