@@ -40,5 +40,20 @@
   <%= @mision.visible %>
 </p>
 
+<span class="glyphicon glyphicon-heart"><%= @mision.get_upvotes.size %></span>
+<% #if @mision.liked_by @current_usuario == true %>
+
+<%= link_to like_mision_path(@mision), method: :put, class: "btn btn-default" do %>
+<%= content_tag(:span, " Agregar a mis Misiones", class: "glyphicon glyphicon-heart") %>
+
+<% end %>
+<% #else %>
+<%= link_to dislike_mision_path(@mision), method: :put, class: "btn btn-default"  do %>
+<%= content_tag(:span, " Quitar de mis Misiones", class: "glyphicon glyphicon-heart") %>
+
+<% end %>
+<% #end %>
+
 <%= link_to 'Editar', edit_mision_path(@mision) %> |
 <%= link_to 'Volver atrás', misions_path %>
+ 

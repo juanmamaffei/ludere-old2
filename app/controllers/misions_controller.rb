@@ -1,5 +1,5 @@
 class MisionsController < ApplicationController
-  before_action :set_mision, only: [:show, :edit, :update, :destroy]
+  before_action :set_mision, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /misions
   # GET /misions.json
@@ -21,6 +21,15 @@ class MisionsController < ApplicationController
   def edit
   end
 
+  def upvote
+    @mision.upvote_by current_usuario
+    redirect_to :back
+  end
+
+  def downvote
+    @mision.downvote_by current_usuario
+    redirect_to :back
+  end
   # POST /misions
   # POST /misions.json
   def create
