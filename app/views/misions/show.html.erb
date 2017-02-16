@@ -1,44 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-6 col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @mision.nombre %>
+        </div>
+      <div class="panel-body">
+        <small><%= @mision.nivel %></small>
+        <p><%= @mision.descripcion %></p>
+        <small><%= @mision.comentario %></small>
+          <%= link_to "Ver temario", @mision.urltemario %>
+      </div>
+      </div>
+      </div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @mision.nombre %>
-</p>
+      <div class="col-xs-6 col-md-3"><%= image_tag @mision.image.url(:large), :class => "img-thumbnail" %></div>
+      </div>
 
-<p>
-  <strong>Nivel:</strong>
-  <%= @mision.nivel %>
-</p>
+  </div><!--- Características de la misión -->
+  <div class="row">
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @mision.descripcion %>
-</p>
+  </div><!--- Porcentaje -->
+</div>
 
-<p>
-  <strong>Urltemario:</strong>
-  <%= @mision.urltemario %>
-</p>
+<div class="container">
+<div class="panel panel-default">
+<div class="panel-heading">
+Objetivos
+</div>
+<div class="panel-body">
 
-<p>
-  <strong>Urlimagen:</strong>
-  <%= @mision.urlimagen %>
-</p>
+<% @objetivos.each do |objetivo| %>
+  
+                        
 
-<p>
-  <strong>Comentario:</strong>
-  <%= @mision.comentario %>
-</p>
 
-<p>
-  <strong>Habilitado:</strong>
-  <%= @mision.habilitado %>
-</p>
 
-<p>
-  <strong>Visible:</strong>
-  <%= @mision.visible %>
-</p>
+<div class="row">
+  <div class="col-xs-2">PIC</div>
+  <div class="col-xs-6"><h3><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></h3><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
+  <div class="col-xs-3 pull-right">
+  
+  <i class="fa fa-star estrellas fa-3x" aria-hidden="true"></i>
+  <i class="fa fa-star-o fa-3x" aria-hidden="true"></i>
+  <i class="fa fa-star-o fa-3x" aria-hidden="true"></i>
+
+  </div>
+
+</div> <!--- Cada objetivo iterado -->
+<% end %>
+</div>
+
+</div>
+</div>
+
+
+
 
 <span class="glyphicon glyphicon-heart"><%= @mision.get_upvotes.size %></span>
 <% #if @mision.liked_by @current_usuario == true %>

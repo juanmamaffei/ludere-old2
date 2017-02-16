@@ -9,7 +9,8 @@ class MisionsController < ApplicationController
 
   # GET /misions/1
   # GET /misions/1.json
-  def show
+ def show
+     @objetivos = Objetivo.select("id", "nombre","descripcion").where(:mision_id => params[:id])
   end
 
   # GET /misions/new

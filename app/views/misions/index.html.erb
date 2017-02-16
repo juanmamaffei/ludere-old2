@@ -1,8 +1,8 @@
 <h1>¡Hay misiones que cumplir!</h1>
 
-<div id="misionador" class="transitions-enabled masonry ">
+<div class="transitions-enabled clearfix masonry" >
     <% @misions.each do |mision| %>
-<div class="box">
+<div class="box col3 masonry-brick">
     <div class="panel panel-default"> <!-- Agregar distinción de col* según cantidad de visitas -->
     <div class="panel-heading">
         <h2 class="panel-title"><%= mision.nombre %></h2>

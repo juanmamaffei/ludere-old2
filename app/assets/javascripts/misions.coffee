@@ -8,5 +8,3 @@ $('#misionador').imagesLoaded ->
   isAnimated: !Modernizr.csstransitions
   itemSelector: '.box'
   isFitWidth: true
-
-   
