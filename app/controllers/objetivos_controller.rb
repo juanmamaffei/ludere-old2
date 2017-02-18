@@ -9,6 +9,7 @@ class ObjetivosController < ApplicationController
   # GET /objetivos/1
   # GET /objetivos/1.json
   def show
+    
   end
 
   # GET /objetivos/new
@@ -73,5 +74,8 @@ class ObjetivosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def objetivo_params
       params.require(:objetivo).permit(:mision_id, :nombre, :descripcion, :urlvideo, :instructivo, :urlevaluativo)
+    end
+    def mision_params
+      params.require(:mision).permit(:id, :nombre)
     end
 end

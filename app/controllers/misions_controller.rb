@@ -4,9 +4,14 @@ class MisionsController < ApplicationController
   # GET /misions
   # GET /misions.json
   def index
-    @misions = Mision.all
+      @misions = Mision.all
   end
 
+  def mismisiones
+      #misiones que sólo coincidan con el voter_id del current_usuario
+      @misions = Mision.all
+      @misions = current_usuario.find_liked_items
+  end
   # GET /misions/1
   # GET /misions/1.json
  def show
@@ -31,6 +36,8 @@ class MisionsController < ApplicationController
     @mision.downvote_by current_usuario
     redirect_to :back
   end
+
+ 
   # POST /misions
   # POST /misions.json
   def create

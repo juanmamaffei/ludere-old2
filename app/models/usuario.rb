@@ -4,5 +4,6 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :misiones
+  acts_as_voter
 
 end

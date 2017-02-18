@@ -1,0 +1,24 @@
+<h1>¡Estas son tus misiones!</h1>
+
+<div class="transitions-enabled clearfix masonry" >
+
+    <% @current_usuario.find_liked_items.each do |mision| %>
+
+
+
+<div class="box col3 masonry-brick">
+    <div class="panel panel-default"> <!-- Agregar distinción de col* según cantidad de visitas -->
+    <div class="panel-heading">
+        <h2 class="panel-title"><%= mision.nombre %></h2>
+    </div>
+    <div class="panel-body">
+<%= image_tag mision.image.url(:large), :class => "img-rounded"%><br>
+<small>Nivel: <i><%= mision.nivel %></i></small>
+<p><%= mision.descripcion %></p>
+ <%= link_to "¡Entrar a la misión!", mision, :class => "btn btn-primary" %>
+    </div>
+    </div>
+</div>
+
+
+    <% end %>
