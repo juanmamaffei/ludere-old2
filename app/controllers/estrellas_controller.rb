@@ -1,11 +1,13 @@
 class EstrellasController < ApplicationController
+	before_action :validarusuario, except: [:show]
+
 	#Dar PRIMERA estrella en nuevo objetivo. Crear, siempre que no exista el registro previamente
 	def nueva
 		@estrella = Estrella.new
 	end
 
 	def crear
-		#comprobar si el ya existe ese idusuario con ese idobjetivo
+		#comprobar si el ya existe ese idusuario con ese idobjetivo. ESTO SE DEBE PASAR AL MODELO!
 		aux= params["estrella"]
 		@verificador = Estrella.find_by(idusuario_id: aux[:idusuario_id], idobjetivo_id: aux[:idobjetivo_id])
 
@@ -45,6 +47,9 @@ class EstrellasController < ApplicationController
 
 
 	private
+		def validarusuario
+			redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+		end
 		def star_params
 			params.require(:estrella).permit(:idusuario_id, :idobjetivo_id, :est1, :est2, :est3)
 		end

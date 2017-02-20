@@ -1,6 +1,8 @@
 class ObjetivosController < ApplicationController
   before_action :set_objetivo, only: [:show, :edit, :update, :destroy]
   before_action :set_mision  # GET /objetivos
+  before_action :validarusuario
+
   # GET /objetivos.json
   def index
     @objetivos = Objetivo.all
@@ -79,4 +81,7 @@ class ObjetivosController < ApplicationController
     def mision_params
       params.require(:mision).permit(:id, :nombre)
     end
+    def validarusuario
+      redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+    end 
 end
