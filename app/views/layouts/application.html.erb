@@ -15,10 +15,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   </head>
-  <div class="container" style="margin-top:50px">
+  
   <body>
     <%= render "partials/menu" %>
+    <div class="container" style="margin-top:50px">
   	<%  unless notice == nil %><div class="alert alert-info"><%= notice %></div><% end %>
     <%  unless alert == nil %><div class="alert alert-warning"><%= alert %></div><% end %>
  
@@ -26,4 +29,7 @@
     	<%= yield %></div>
     
   </body>
+  <script type="text/javascript">$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});</script>
 </html>

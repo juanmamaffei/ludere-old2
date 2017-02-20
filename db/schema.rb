@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214132549) do
+ActiveRecord::Schema.define(version: 20170218153848) do
+
+  create_table "estrellas", force: :cascade do |t|
+    t.integer  "idusuario_id"
+    t.integer  "idobjetivo_id"
+    t.boolean  "est1"
+    t.boolean  "est2"
+    t.boolean  "est3"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["idobjetivo_id"], name: "index_estrellas_on_idobjetivo_id"
+    t.index ["idusuario_id"], name: "index_estrellas_on_idusuario_id"
+  end
 
   create_table "misions", force: :cascade do |t|
     t.string   "nombre"

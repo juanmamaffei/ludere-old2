@@ -1,42 +1,76 @@
 <div class="row">
 <div class="col-md-9 col-xs-12">
 <div class="panel panel-primary">
-<strong>Objetivo:</strong> <%= @objetivo.nombre %>
-<strong>Misión:</strong> <%= @mision.nombre %>
-<p>
-  <%= @objetivo.descripcion %>
-</p>
+  <div class="panel-heading">
+    <strong>Objetivo:</strong> <%= @objetivo.nombre %>
+  </div>
+  <div class="panel-body">
+      <strong>Misión:</strong> <%= link_to @mision.nombre, "../" %>
+      <p>
+        <%= @objetivo.descripcion %>
+      </p>
+  </div>
+
 </div>
+
+
 </div>
 <div class="col-md-3 col-xs-12">
 
-  <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-  <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-  <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+<div class="panel panel-default">
+<div class="panel-heading">Estado del objetivo</div>
+  <% if @estrella.est1? %>
+ 
+      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%else%>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%end%>
 
+  <% if @estrella.est2? %>
+ 
+      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%else%>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%end%>
+
+    <% if @estrella.est3? %>
+ 
+      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%else%>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+  <%end%> 
+</div>
 </div>
 
 
 
 </div>
-<div class="hs-responsive-embed-youtube">   <%= raw @objetivo.urlvideo %> </div>
+<div class="row"><div class="col-xs-12">
+  <div class="hs-responsive-embed-youtube">   <%= raw @objetivo.urlvideo %> </div>
+  </div><!--- Evento para que cuando termine el video, compruebe que a menos que el usuario ya tenga est1, mande por POST la nueva estrella 1 con el idobjetivo y el idusuario -->
+</div>
 
+<div class="row">
+<div class="row"><div class="col-xs-12">
 
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#ay">Ayudas del objetivo</a></li>
+                <li><a data-toggle="tab" href="#pr">¡Quiero ver la prueba!</a></li>
+              </ul>
 
-<p>
-  <strong>Urlvideo:</strong>
-  <%= @objetivo.urlvideo %>
-</p>
+              <div class="tab-content panel">
+                <div id="ay" class="tab-pane fade in active">
+                  <h3>Ayudas</h3>
+                    <%= raw @objetivo.instructivo %>
+                </div>
+                <div id="pr" class="tab-pane fade">
+                  <h3>Prueba</h3>
+                    <%= link_to "Ir a la prueba", @objetivo.urlevaluativo, target: :_blank  %>
+                </div>
+              </div>
+</div>
+</div>
 
-<p>
-  <strong>Instructivo:</strong>
-  <%= @objetivo.instructivo %>
-</p>
-
-<p>
-  <strong>Urlevaluativo:</strong>
-  <%= @objetivo.urlevaluativo %>
-</p>
-
+<!--- Sólo para admins
 <%= link_to 'Edit', edit_mision_objetivo_path(@objetivo) %> |
-<%= link_to 'Back', mision_objetivos_path %>
+<%= link_to 'Back', mision_objetivos_path %> -->

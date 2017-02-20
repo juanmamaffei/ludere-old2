@@ -28,15 +28,24 @@
 .menu{
 	background-color: #47CC68;
 }
+.in{
+  background-color: #FFF;
+}
 .navbar-inverse{
   background-color: rgba(16,71,57,0.5);
   font-family: "niveau-grotesk";
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .navbar{
   font-family: "trajan-pro-3";
   color: #000000 !important;
+}
+.navbar-nav{
+  color: #FFFFFF !important;
+}
+.navbar-fixed-top{
+  background-color:rgba(94,199,184,0.5);
 }
 
 body{
@@ -115,6 +124,10 @@ h2{
 p{
   font-family: "niveau-grotesk";
 }
+ul{
+  font-family: "niveau-grotesk";
+  color: #FFF !important;
+}
 .estrellas{
   color: yellow;
 }
@@ -129,9 +142,35 @@ padding-top: 25px;
 
 .hs-responsive-embed-youtube iframe {
 
-position: absolute;
+    position: absolute;
 
-width: 100%!important;
+    width: 100%!important;
 
-height: 100%!important;
+    height: 100%!important;
+}
+
+.nav-tabs {
+  margin-top:50px;
+}
+
+
+.navbar-inverse .navbar-brand {
+  color: #FFF;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  color: #000;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-text {
+  color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color:#1c609a;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #000;
+  background-color: transparent;
 }

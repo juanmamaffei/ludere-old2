@@ -9,7 +9,8 @@ class ObjetivosController < ApplicationController
   # GET /objetivos/1
   # GET /objetivos/1.json
   def show
-    
+    #@estrellas = Estrella.select("idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where
+    @estrella = Estrella.find_by(idusuario_id: current_usuario.id, idobjetivo_id: params[:id])
   end
 
   # GET /objetivos/new

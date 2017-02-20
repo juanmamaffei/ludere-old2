@@ -1,0 +1,15 @@
+<h1>Menú para la creación/actualización de estrellas</h1>
+
+<%= simple_form_for @estrella do |f| %>
+	<% @estrella.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+	<%= f.input :idusuario_id %>
+	<%= f.input :idobjetivo_id %>
+	<%= f.check_box :est1 %>
+	<%= f.check_box :est2 %>
+	<%= f.check_box :est3 %>
+	<%= f.button :submit %>
+	<% end %>
+	<%= current_usuario %>
+	

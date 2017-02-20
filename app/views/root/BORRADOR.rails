@@ -1,0 +1,16 @@
+                   <% @estrellas.each do |estrella| %>
+                            <% if objetivo.id == estrella.idobjetivo_id %>
+                             <!--- Guardar estrellas positivas en caso de que haya en el hash-->
+                                      <% if estrella.est1==true %>
+
+                                      <% estre1 =true; %>
+                                      <% end %>    
+                            <% end %>
+                      <% end %>
+
+        <!--- Guardar el hash con 3 falsos -->
+                    <% if estre1==true %>
+                      <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+                    <% else %>
+                      <i class="fa fa-star fa-2x-o" aria-hidden="true"></i>
+                    <% end %>

@@ -1,21 +1,24 @@
 class MisionsController < ApplicationController
   before_action :set_mision, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-
+      
   # GET /misions
   # GET /misions.json
   def index
       @misions = Mision.all
+
   end
 
   def mismisiones
       #misiones que sólo coincidan con el voter_id del current_usuario
-      @misions = Mision.all
       @misions = current_usuario.find_liked_items
+
   end
   # GET /misions/1
   # GET /misions/1.json
  def show
      @objetivos = Objetivo.select("id", "nombre","descripcion").where(:mision_id => params[:id])
+     @estrellas = Estrella.select("idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where(idusuario_id: current_usuario.id)
+     #Para optimizar se deberá agregar un campo de idmision y requerirlo en la misma consulta de la línea anterior, para disminuir el tamaño del array
   end
 
   # GET /misions/new
@@ -88,4 +91,5 @@ class MisionsController < ApplicationController
     def mision_params
       params.require(:mision).permit(:nombre, :nivel, :descripcion, :urltemario, :urlimagen, :comentario, :habilitado, :visible, :image)
     end
+    
 end

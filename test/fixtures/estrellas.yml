@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idusuario: one
+  idobjetivo: one
+  est1: false
+  est2: 
+  est3: false
+
+two:
+  idusuario: two
+  idobjetivo: two
+  est1: false
+  est2: 
+  est3: false

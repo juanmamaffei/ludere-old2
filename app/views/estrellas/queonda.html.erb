@@ -1,0 +1,21 @@
+
+<% if @verificador==nil %>
+
+  <% if estrella.errors.any? %>
+  <h1> Hubo un error! </h1>
+    <div id="error_explanation">
+      <h2><%= pluralize(estrella.errors.count, "error") %></h2>
+
+      <ul>
+      <% estrella.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+   <%else%>
+
+<h1>La estrella ya fue adquirida previamente.</h1>
+   <% end %>

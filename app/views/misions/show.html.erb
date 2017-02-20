@@ -55,25 +55,54 @@ Objetivos
 </div>
 <div class="panel-body">
 
-<% @objetivos.each do |objetivo| %>
-  
-                        
+      <% @objetivos.each do |objetivo| %>
+                       
 
-
-
-<div class="row">
-  <div class="col-xs-1">PIC</div>
-  <div class="col-xs-7 col-md-9"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
-  <div class="col-xs-4 col-md-2 pull-right">
-  
-  <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-  <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-  <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-
-  </div>
-
-</div> <!--- Cada objetivo iterado -->
+      <% estre1 = false %>
+      <% estre2 =false %>
+      <% estre3= false %>
+      <div class="row">
+        <div class="col-xs-1">PIC</div>
+        <div class="col-xs-7 col-md-9"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
+        
+        <div class="col-xs-4 col-md-2 pull-right">
+  <% existe = false; #variable que comprobará si existe el objetivo%>
+     <% @estrellas.each do |r| %>
+  <% if r.idobjetivo_id==objetivo.id %>
+    <% existe = true; #el objetivo existe! %>
+    <% if r.est1? %>
+      <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+      <% if r.est2? %>
+        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+        <% if r.est3? %>
+        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+        <% end %>
+      <% else %>
+        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+    <% end %>
+    
 <% end %>
+
+<% end %>
+
+<% if existe==false %>
+        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+<% end %>
+
+        </div>
+
+      </div> <!--- Cada objetivo iterado -->
+      <% end %>
 </div>
 
 </div>
