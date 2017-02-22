@@ -13,6 +13,12 @@ class ObjetivosController < ApplicationController
   def show
     #@estrellas = Estrella.select("idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where
     @estrella = Estrella.find_by(idusuario_id: current_usuario.id, idobjetivo_id: params[:id])
+    
+    if @estrella == nil
+      @noexiste = true
+    else
+      @noexiste = false
+    end
   end
 
   # GET /objetivos/new
@@ -82,6 +88,8 @@ class ObjetivosController < ApplicationController
       params.require(:mision).permit(:id, :nombre)
     end
     def validarusuario
-      redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      unless usuario_signed_in?
+        redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      end
     end 
 end

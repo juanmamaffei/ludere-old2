@@ -62,8 +62,15 @@ Objetivos
       <% estre2 =false %>
       <% estre3= false %>
       <div class="row">
-        <div class="col-xs-1">PIC</div>
-        <div class="col-xs-7 col-md-9"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
+          <% if current_usuario.es_docente? %>
+
+        <div class="col-md-2"><span data-toggle="tooltip" title="Editar misión"><%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_mision_objetivo_path(@mision.id, objetivo.id), :class => "btn btn-warning" %></span>
+
+        <span data-toggle="tooltip" title="Eliminar misión">
+        <%= link_to content_tag(:i, " ", class: "fa fa-trash"), mision_objetivo_path(@mision.id, objetivo.id), method: :delete, data: { confirm: "¿Estás seguro que deseás eliminar esta misión?" }, class: "btn btn-danger"  %></span></div>
+
+             <% end %>
+        <div class="col-xs-7 col-md-8"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
         
         <div class="col-xs-4 col-md-2 pull-right">
   <% existe = false; #variable que comprobará si existe el objetivo%>
@@ -101,8 +108,18 @@ Objetivos
 
         </div>
 
-      </div> <!--- Cada objetivo iterado -->
+      </div> 
+    <!--- Cada objetivo iterado -->
+
       <% end %>
+
+          <div class="row">
+    <div class="col-xs-12">
+    
+    <% if current_usuario.es_docente? %><span data-toggle="tooltip" title="Nueva misión">
+        <%= link_to '+', new_mision_objetivo_path(@mision), :class =>"btn btn-success" %></span>
+     <% end %>
+    </div></div>
 </div>
 
 </div>

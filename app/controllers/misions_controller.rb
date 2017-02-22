@@ -1,6 +1,7 @@
 class MisionsController < ApplicationController
   before_action :set_mision, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :validarusuario, except: [:index]
+  before_action :validarusuario
+
 
   # GET /misions
   # GET /misions.json
@@ -93,6 +94,8 @@ class MisionsController < ApplicationController
       params.require(:mision).permit(:nombre, :nivel, :descripcion, :urltemario, :urlimagen, :comentario, :habilitado, :visible, :image)
     end
     def validarusuario
-      redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      unless usuario_signed_in?
+        redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      end
     end 
 end

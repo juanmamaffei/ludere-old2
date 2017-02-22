@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   devise_for :usuarios
   get 'misions/mismisiones'
 
-  get 'estrellas/nueva'
+  get 'estrellas/nueva' #Habilitar sólo para pruebas
   post 'estrellas', to: 'estrellas#crear'
+
+  get 'usuarios', to: 'usuarios#index'
+  get 'usuarios/:idusuario', to: 'usuarios#mostrar', as:'veruser'
   
   resources :misions do
   	resources :objetivos

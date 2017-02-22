@@ -1,0 +1,32 @@
+<h1>Administración de usuarios</h1>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Permisos</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+
+<% @usuarios.each do |u| %>
+
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.nombre %></td>
+        <td><%= u.apellido %></td>
+        <td><%= u.email %></td>
+        <td><%= u.permisos %></td>
+        <td>Editar | Borrar | <%= link_to "Ver obj.", veruser_path(u.id) %></td>
+      </tr>
+
+<% end %>
+
+    </tbody>
+  </table>
+  </div>
+</div>

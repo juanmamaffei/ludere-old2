@@ -5,6 +5,10 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :misiones
   has_many :estrellas
-  acts_as_voter
+  acts_as_voter #Para agregar a Mis Misiones
+
+
+  include PermisosConcern
+
 
 end

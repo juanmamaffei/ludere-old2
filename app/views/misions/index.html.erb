@@ -1,6 +1,23 @@
 <h1>¡Hay misiones que cumplir!</h1>
 
 <div class="transitions-enabled clearfix masonry" >
+
+<% if current_usuario.es_docente? %>
+    <div class="box col1 masonry-brick">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Crear nueva misión</h2>
+    </div>
+   <div class="panel-body">
+    <%= link_to '+', new_mision_path, :class =>"btn btn-success" %>
+   </div>
+   </div></div>
+
+<% end %>
+
+
+
+
     <% @misions.each do |mision| %>
 <div class="box col3 masonry-brick">
     <div class="panel panel-default"> <!-- Agregar distinción de col* según cantidad de visitas -->
@@ -11,7 +28,19 @@
 <%= image_tag mision.image.url(:large), :class => "img-rounded"%><br>
 <small>Nivel: <i><%= mision.nivel %></i></small>
 <p><%= mision.descripcion %></p>
-<%= link_to "Dar un vistazo", mision.urltemario, :class => "btn btn-default" %> <%= link_to "¡Comenzar misión!", mision, :class => "btn btn-primary" %>
+<%= link_to "Dar un vistazo", mision.urltemario, :class => "btn btn-default" %> <%= link_to "¡Comenzar misión!", mision, :class => "btn btn-default"  %>
+
+
+<% if current_usuario.es_docente? %>
+
+  <%= link_to "Editar", edit_mision_path(mision), :class => "btn btn-warning"  %>
+  <%= link_to "Eliminar", mision, method: :delete, data: { confirm: "¿Estás seguro que deseás eliminar esta misión?" }, class: "btn btn-danger"  %>
+
+<% end %>
+
+
+
+
     </div>
     </div>
 </div>
@@ -20,10 +49,7 @@
         <td><%= mision.comentario %></td>
         <td><%= mision.habilitado %></td>
         <td><%= mision.visible %></td>
-        OPCIONES PARA ADMINISTRADORES EN PANEL-FOOTER
-        <td><%= link_to 'Editar', edit_mision_path(mision) %></td>
-        <td><%= link_to 'Eliminar', mision, method: :delete, data: { confirm: '¿Estás seguro que querés eliminar esta misión?' } %></td></div>
-        <%= link_to 'Crear nueva misión', new_mision_path, :class =>"btn btn-default" %>
+
         -->
     <% end %>
 

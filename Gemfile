@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.5'
  gem 'masonry-rails', '~> 0.2.4'
  gem 'modernizr-rails'
  gem 'acts_as_votable', '~> 0.10.0'
- gem 'cancancan', '~> 1.15'
  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

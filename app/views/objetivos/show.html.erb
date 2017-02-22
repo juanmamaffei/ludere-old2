@@ -19,26 +19,36 @@
 
 <div class="panel panel-default">
 <div class="panel-heading">Estado del objetivo</div>
-  <% if @estrella.est1? %>
- 
-      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%else%>
-      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%end%>
+<% if @noexiste %>
+      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Segunda estrella!"></i>
+      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Tercera estrella!"></i>
 
-  <% if @estrella.est2? %>
- 
-      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%else%>
-      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%end%>
 
-    <% if @estrella.est3? %>
- 
-      <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%else%>
-      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-  <%end%> 
+<% else %>
+
+        <% if @estrella.est1? %>
+       
+            <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+        <%else%>
+            <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+        <%end%>
+
+        <% if @estrella.est2? %>
+       
+            <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Segunda estrella!"></i>
+        <%else%>
+            <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Segunda estrella!"></i>
+        <%end%>
+
+          <% if @estrella.est3? %>
+       
+            <i class="fa fa-star fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Tercera estrella!"></i>
+        <%else%>
+            <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Tercera estrella!"></i>
+        <%end%> 
+
+<% end %>
 </div>
 </div>
 
