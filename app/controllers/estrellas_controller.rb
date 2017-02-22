@@ -1,5 +1,6 @@
 class EstrellasController < ApplicationController
 	before_action :validarusuario, except: [:show]
+  	before_action :validaradmin
 
 	#Dar PRIMERA estrella en nuevo objetivo. Crear, siempre que no exista el registro previamente
 	def nueva
@@ -35,21 +36,32 @@ class EstrellasController < ApplicationController
 
 	#Dar estrella. Actualizar, si ya existe el registro previamente
 	def darestrellas
+		@estrella= Estrella.find_by(id: params[:id])
+		@estrella.est1 = params[:est1]
+		@estrella.est2 = params[:est2]
+		@estrella.est3 = params[:est3]
 		#Las puede dar un usuario con privilegios de PROFESOR
-
-
-		#Las puede dar el sistema automáticamente (TODAVÍA NO)
+		respond_to do |format|
+				    if @estrella.save
+				        format.html { redirect_to veruser_path(idusuario: params[:idusuario_id]), notice: 'Se dio una estrella correctamente'} #Redireccionar al objetivo
+				    else
+				        format.html { redirect_to usuarios_path, notice: 'Hubo un error' } #Redireccionar a página de error
+				    end
+			    end
 	end
-	#Index de todas las estrellas, filtrando por usuario
-
-
-	#Index de todas las estrellas, filtrado por usuario y por objetivo (para mostrar en cada objetivo)
-
+	
 
 	private
-		def validarusuario
-			redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
-		end
+    def validarusuario
+      unless usuario_signed_in?
+        redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      end
+    end 
+    def validaradmin
+      unless current_usuario.es_admin?
+      	redirect_to misions_path, notice: "No disponés de permisos suficientes para acceder a esta sección."
+      end
+    end
 		def star_params
 			params.require(:estrella).permit(:idusuario_id, :idobjetivo_id, :est1, :est2, :est3)
 		end

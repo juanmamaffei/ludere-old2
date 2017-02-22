@@ -30,7 +30,7 @@ class UsuariosController < ApplicationController
     	Usuario.find(params[:idusuario])
     end
     def estrellas_parametros
-    	Estrella.select("idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where(idusuario_id: params[:idusuario])
+    	Estrella.select("id", "idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where(idusuario_id: params[:idusuario])
     end
 end
 

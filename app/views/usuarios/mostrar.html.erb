@@ -1,10 +1,85 @@
-<h1> Mostrar </h1>
+<h1> Datos del usuario </h1>
 
-<%= params[:idusuario] %>
-<%= @estrellas.each do |objetivo| %>
-<%= objetivo.idusuario_id %>
-<%= objetivo.idobjetivo_id %>
-<%= objetivo.est1 %>
-<%= objetivo.est2 %>
-<%= objetivo.est3 %>
-<% end %>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Permisos</th>
+ 
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr>
+        <td><%= @usuario.id %></td>
+        <td><%= @usuario.nombre %></td>
+        <td><%= @usuario.apellido %></td>
+        <td><%= @usuario.email %></td>
+        <td><%= @usuario.permisos %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+<h1>Obetivos del usuario</h1>
+
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID objetivo</th>
+        <th>Nombre de objetivo</th>
+        <th>ID Misión</th>
+        <th>Nombre de misión</th>
+        <th>Estrellas</th>
+ 
+      </tr>
+    </thead>
+    <tbody>
+
+
+<% @estrellas.each do |objetivo| %>
+      <tr>
+        <td><%= objetivo.idobjetivo_id %></td>
+        <td> Nombre de objetivo</td>
+        <td> ID misión</td>
+        <td> Nombre de misión</td>
+        <td>
+        <%=objetivo.id %>
+
+
+        <% if objetivo.est1? %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star fa-2x") %>
+        <% else %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star-o fa-2x") %>
+        <% end %>
+
+        	<% e1={"id"=>objetivo.id, "est1"=>!objetivo.est1, "est2"=>objetivo.est2, "est3"=>objetivo.est3, "idusuario_id"=>objetivo.idusuario_id, "idobjetivo_id"=>objetivo.idobjetivo_id}  %>
+        <%= link_to tage1, usuarios_darestrellas_path(e1), :method => :patch %>
+
+		<% if objetivo.est2? %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star fa-2x") %>
+        <% else %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star-o fa-2x") %>
+        <% end %>
+
+        	<% e2={"id"=>objetivo.id, "est1"=>objetivo.est1, "est2"=>!objetivo.est2, "est3"=>objetivo.est3, "idusuario_id"=>objetivo.idusuario_id, "idobjetivo_id"=>objetivo.idobjetivo_id}  %>
+        <%= link_to tage1, usuarios_darestrellas_path(e2), :method => :patch %>
+
+		<% if objetivo.est3? %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star fa-2x") %>
+        <% else %>
+        	<% tage1 = content_tag(:i, " ", class: "fa fa-star-o fa-2x") %>
+        <% end %>
+        	<% e3={"id"=>objetivo.id, "est1"=>objetivo.est1, "est2"=>objetivo.est2, "est3"=>!objetivo.est3, "idusuario_id"=>objetivo.idusuario_id, "idobjetivo_id"=>objetivo.idobjetivo_id}  %>
+        <%= link_to tage1, usuarios_darestrellas_path(e3), :method => :patch %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
