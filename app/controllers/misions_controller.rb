@@ -1,6 +1,7 @@
 class MisionsController < ApplicationController
   before_action :set_mision, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :validarusuario
+  before_action :validaradmin, except: [:show, :index, :upvote, :downvote]
 
 
   # GET /misions
@@ -98,4 +99,9 @@ class MisionsController < ApplicationController
         redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
       end
     end 
+    def validaradmin
+      unless current_usuario.es_admin?
+        redirect_to misions_path, notice: "No disponés de permisos suficientes para acceder a esta sección."
+      end
+    end
 end

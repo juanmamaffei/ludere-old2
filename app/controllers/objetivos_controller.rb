@@ -2,6 +2,8 @@ class ObjetivosController < ApplicationController
   before_action :set_objetivo, only: [:show, :edit, :update, :destroy]
   before_action :set_mision  # GET /objetivos
   before_action :validarusuario
+  before_action :validaradmin, except: [:show]
+
 
   # GET /objetivos.json
   def index
@@ -14,11 +16,6 @@ class ObjetivosController < ApplicationController
     #@estrellas = Estrella.select("idobjetivo_id", "idusuario_id", "est1", "est2", "est3").where
     @estrella = Estrella.find_by(idusuario_id: current_usuario.id, idobjetivo_id: params[:id])
     
-    if @estrella == nil
-      @noexiste = true
-    else
-      @noexiste = false
-    end
   end
 
   # GET /objetivos/new
@@ -92,4 +89,9 @@ class ObjetivosController < ApplicationController
         redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
       end
     end 
+    def validaradmin
+      unless current_usuario.es_admin?
+        redirect_to misions_path, notice: "No disponés de permisos suficientes para acceder a esta sección."
+      end
+    end
 end

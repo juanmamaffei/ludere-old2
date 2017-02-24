@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'estrellas/nueva' #Habilitar sólo para pruebas
   post 'estrellas', to: 'estrellas#crear'
+  post 'autoes', to: 'estrellas#crearauto'
 
   get 'usuarios', to: 'usuarios#index'
   get 'usuarios/:idusuario', to: 'usuarios#mostrar', as:'veruser'

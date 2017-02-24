@@ -174,3 +174,30 @@ padding-top: 25px;
   color: #000;
   background-color: transparent;
 }
+#seter {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(255,255,255,0.92);
+  padding:30px;
+  margin-top:-100px;
+  margin-left:25%;
+  border-radius:30px;
+  animation-name: seter;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  text-decoration:none;
+  text-shadow: beige;
+  border-color:cadetblue;
+  border:5px solid;
+  text-align:center;
+  color:teal;
+  font-size:large;
+  font-family: "niveau-grotesk";
+}
+
+@keyframes seter{
+  0%{background-color:rgba(255,255,255,1);}
+  50%{background-color:rgba(255,255,255,0.8);}
+  100%{background-color:rgba(255,255,255,1);}
+
+}

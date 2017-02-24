@@ -1,6 +1,6 @@
 class EstrellasController < ApplicationController
 	before_action :validarusuario, except: [:show]
-  	before_action :validaradmin
+  	before_action :validaradmin, except: [:crearauto]
 
 	#Dar PRIMERA estrella en nuevo objetivo. Crear, siempre que no exista el registro previamente
 	def nueva
@@ -29,11 +29,32 @@ class EstrellasController < ApplicationController
 				    end
 			    end
 		else
-			render :queonda, notice: 'El registro está duplicado'
+			respond_to.html{render :queonda, notice: 'El registro está duplicado'}	
     	end
 	end
 
+	def crearauto
+		#comprobar si el ya existe ese idusuario con ese idobjetivo. ESTO SE DEBE PASAR AL MODELO!
+		
+		@verificador = Estrella.find_by(idusuario_id: params[:idusuario_id], idobjetivo_id: params[:idobjetivo_id])
 
+		if @verificador == nil
+
+				#Puede crear un PROFESOR
+		 		@estrella = Estrella.new(autostar_params)
+
+		 	
+		 		respond_to do |format|
+				    if @estrella.save
+				        format.html { redirect_to misions_path, notice: 'Se dio una estrella correctamente' } #Redireccionar al objetivo
+				    else
+				        format.html { render :queonda, notice: 'Hubo un error' } #Redireccionar a página de error
+				    end
+			    end
+		else
+			render :queonda, notice: 'El registro está duplicado'
+    	end
+	end
 	#Dar estrella. Actualizar, si ya existe el registro previamente
 	def darestrellas
 		@estrella= Estrella.find_by(id: params[:id])
@@ -64,5 +85,8 @@ class EstrellasController < ApplicationController
     end
 		def star_params
 			params.require(:estrella).permit(:idusuario_id, :idobjetivo_id, :est1, :est2, :est3)
+		end
+			def autostar_params
+			{"idusuario_id"=>current_usuario.id, "idobjetivo_id" => params[:idobjetivo_id],"est1"=> true, "est2"=> false, "est3"=> false}
 		end
 end

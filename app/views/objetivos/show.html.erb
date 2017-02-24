@@ -19,10 +19,10 @@
 
 <div class="panel panel-default">
 <div class="panel-heading">Estado del objetivo</div>
-<% if @noexiste %>
-      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
-      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Segunda estrella!"></i>
-      <i class="fa fa-star fa-2x-o" aria-hidden="true" data-toggle="tooltip" title="¡Tercera estrella!"></i>
+<% if @estrella==nil %>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Primer estrella! Se te otorga cuando viste el video completo"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Segunda estrella!"></i>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true" data-toggle="tooltip" title="¡Tercera estrella!"></i>
 
 
 <% else %>
@@ -56,10 +56,65 @@
 
 </div>
 <div class="row"><div class="col-xs-12">
-  <div class="hs-responsive-embed-youtube">   <%= raw @objetivo.urlvideo %> </div>
-  </div><!--- Evento para que cuando termine el video, compruebe que a menos que el usuario ya tenga est1, mande por POST la nueva estrella 1 con el idobjetivo y el idusuario -->
-</div>
 
+    <script>
+     // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '360',
+          width: '640',
+          videoId: '<%= @objetivo.urlvideo %>',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED && !done) {
+          // EVENTO PARA MOSTRAR EL TAG OCULTO 
+          done = true;
+          document.getElementById('seter').style.display = 'block';
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+</script>
+
+
+  <div class="hs-responsive-embed-youtube"> <div id="player"></div> </div>
+  </div><!--- Evento para que cuando termine el video, compruebe que a menos que el usuario ya tenga est1, mande por POST la nueva estrella 1 con el idobjetivo y el idusuario -->
+
+
+
+</div>
+  <% if @estrella==nil %>
+    <div class="row"><div id='seter' style='display:none;'>
+    <% e1={"idobjetivo_id"=>@objetivo.id}  %>
+    <%= link_to "Reclamar primera estrella en el objetivo", autoes_path(e1), :method => :create %><br>
+    <i class="fa fa-star fa-3x" aria-hidden="true" data-toggle="tooltip" title="¡Obtener estrella!"></i>
+    </div></div>
+  <% end %>
 <div class="row">
 <div class="row"><div class="col-xs-12">
 
