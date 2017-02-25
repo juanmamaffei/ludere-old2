@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @grupo.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @grupo.descripcion %>
+</p>
+
+<p>
+  <strong>Integrantes:</strong>
+  <%= @grupo.integrantes %>
+</p>
+
+<p>
+  <strong>Misiones:</strong>
+  <%= @grupo.misiones %>
+</p>
+
+<p>
+  <strong>Administradores:</strong>
+  <%= @grupo.administradores %>
+</p>
+
+<p>
+  <strong>Abierto:</strong>
+  <%= @grupo.abierto %>
+</p>
+
+<%= link_to 'Edit', edit_grupo_path(@grupo) %> |
+<%= link_to 'Back', grupos_path %>
+
+<div class="row"><div class="col-xs-12">
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#mi">Misiones</a></li>
+                <li><a data-toggle="tab" href="#mu">Muro</a></li>
+                <li><a data-toggle="tab" href="#in">Integrantes</a></li>
+                <li><a data-toggle="tab" href="#lo">Logros</a></li>
+              </ul>
+
+              <div class="tab-content panel">
+                <div id="mi" class="tab-pane fade in active">
+                  <h3>Misiones</h3>
+                    <%= %>
+                </div>
+                <div id="mu" class="tab-pane fade">
+                  <h3>Muro</h3>
+                    <%=   %>
+                </div>
+                <div id="in" class="tab-pane fade">
+                  <h3>Integrantes</h3>
+                    <%=   %>
+                </div>
+                <div id="lo" class="tab-pane fade">
+                  <h3>Logros</h3>
+                    <%=   %>
+                </div>
+              </div>
+</div>
+</div>

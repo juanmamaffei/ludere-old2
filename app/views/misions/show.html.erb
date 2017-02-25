@@ -42,12 +42,6 @@
 
   </div><!--- Características de la misión -->
 
-<div class="progress">
-  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-    40% Completado
-  </div>
-</div>
 
 </div>
 
@@ -57,7 +51,9 @@
 Objetivos
 </div>
 <div class="panel-body">
-
+<% nest1=0 %>
+<% nest2=0 %>
+<% nest3=0 %>
       <% @objetivos.each do |objetivo| %>
                        
 
@@ -73,19 +69,22 @@ Objetivos
         <%= link_to content_tag(:i, " ", class: "fa fa-trash"), mision_objetivo_path(@mision.id, objetivo.id), method: :delete, data: { confirm: "¿Estás seguro que deseás eliminar esta misión?" }, class: "btn btn-danger"  %></span></div>
 
              <% end %>
-        <div class="col-xs-7 col-md-8"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p>Lorem ipsum lorem ipsum lorem ipsum</p></div>
+        <div class="col-xs-7 col-md-8"><strong><%= link_to objetivo.nombre, mision_objetivo_path(mision_id: @mision.id, id: objetivo.id) %></strong><p><%= objetivo.descripcion %></p></div>
         
-        <div class="col-xs-4 col-md-2 pull-right">
+        <div class="col-xs-5 col-md-2 pull-right">
   <% existe = false; #variable que comprobará si existe el objetivo%>
      <% @estrellas.each do |r| %>
   <% if r.idobjetivo_id==objetivo.id %>
     <% existe = true; #el objetivo existe! %>
     <% if r.est1? %>
       <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+      <% nest1=nest1+1 %>
       <% if r.est2? %>
         <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+        <% nest2=nest2+1 %>
         <% if r.est3? %>
         <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+        <% nest3=nest3+1 %>
       <% else %>
         <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
         <% end %>
@@ -114,7 +113,10 @@ Objetivos
       </div> 
     <!--- Cada objetivo iterado -->
 
+
       <% end %>
+
+
 
           <div class="row">
     <div class="col-xs-12">
@@ -126,6 +128,71 @@ Objetivos
 </div>
 
 </div>
+
+
+
+<% progreso = (100 * nest2 / @objetivos.length) %>
+<% progresoexc = (100 * nest3 / @objetivos.length) %>
+
+<% vistos = (100 * nest1 / @objetivos.length) %>
+<h1 data-toggle="tooltip" title="Para cumplir la misión, deberás obtener al menos dos estrellas en TODOS los objetivos">Progresos personales</h1>
+<div class="row">
+<div class="col-xs-12 col-sm-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">Cumplidos(<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>)</div>
+    <div class="panel-body"><%= nest2 %>/<%= @objetivos.length %></div>
+    <div class="panel-footer">
+
+    <div class="progress"> 
+      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+  aria-valuenow="<%= progreso %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= progreso %>%">
+    <%= progreso %>% Completado
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+  <div class="panel panel-info">
+    <div class="panel-heading">Con excelencia(<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></i><i class="fa fa-star" aria-hidden="true"></i>)</div>
+    <div class="panel-body"><%= nest3 %>/<%= @objetivos.length %></div>
+    <div class="panel-footer">
+
+    <div class="progress"> 
+      <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+  aria-valuenow="<%= progresoexc %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= progresoexc %>%">
+    <%= progresoexc %>% Completado
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">Vistos(<i class="fa fa-star" aria-hidden="true"></i>)</div>
+    <div class="panel-body"><%= nest1 %>/<%= @objetivos.length %></div>
+    <div class="panel-footer">
+
+    <div class="progress"> 
+      <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+  aria-valuenow="<%= vistos %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= vistos %>%">
+    <%= vistos %>% Completado
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
 </div>
 
  <script>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grupo: one
+  usuario: one
+  respuesta: 1
+  contenido: MyText
+
+two:
+  grupo: two
+  usuario: two
+  respuesta: 1
+  contenido: MyText

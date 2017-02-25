@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :grupos do
+    resources :posts
+  end
+
   devise_for :usuarios
   get 'misions/mismisiones'
 
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'usuarios', to: 'usuarios#index'
   get 'usuarios/:idusuario', to: 'usuarios#mostrar', as:'veruser'
+  
   patch 'usuarios/darestrellas', to: 'estrellas#darestrellas'
   put 'usuarios/darestrellas', to: 'estrellas#darestrellas'
   

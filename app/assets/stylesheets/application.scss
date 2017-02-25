@@ -201,3 +201,8 @@ padding-top: 25px;
   100%{background-color:rgba(255,255,255,1);}
 
 }
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }

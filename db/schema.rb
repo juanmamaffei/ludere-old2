@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221215727) do
+ActiveRecord::Schema.define(version: 20170225025503) do
 
   create_table "estrellas", force: :cascade do |t|
     t.integer  "idusuario_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170221215727) do
     t.datetime "updated_at",    null: false
     t.index ["idobjetivo_id"], name: "index_estrellas_on_idobjetivo_id"
     t.index ["idusuario_id"], name: "index_estrellas_on_idusuario_id"
+  end
+
+  create_table "grupos", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.text     "integrantes"
+    t.text     "misiones"
+    t.text     "administradores"
+    t.boolean  "abierto"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "misions", force: :cascade do |t|
@@ -50,6 +61,17 @@ ActiveRecord::Schema.define(version: 20170221215727) do
     t.string   "urlevaluativo"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "grupo_id"
+    t.integer  "usuario_id"
+    t.integer  "respuesta"
+    t.text     "contenido"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grupo_id"], name: "index_posts_on_grupo_id"
+    t.index ["usuario_id"], name: "index_posts_on_usuario_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
