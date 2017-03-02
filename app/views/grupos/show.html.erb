@@ -13,11 +13,17 @@
 <p>
   <strong>Integrantes:</strong>
   <%= @grupo.integrantes %>
+  <% @integrantes.each do |i| %>
+    <%= i.email %>
+  <% end %>
 </p>
 
 <p>
   <strong>Misiones:</strong>
   <%= @grupo.misiones %>
+    <% @misiones.each do |i| %>
+    <%= i.nombre %>
+  <% end %>
 </p>
 
 <p>
@@ -44,8 +50,19 @@
 
               <div class="tab-content panel">
                 <div id="mi" class="tab-pane fade in active">
-                  <h3>Misiones</h3>
-                    <%= %>
+                                    
+                    <% @misiones.each do |m| %>
+                    <div class="row">
+                      <div class="col-xs-3 col-sm-2"><%= image_tag m.image.url(:med), :class => "img-circle img-responsive" %></div>
+                      <div class="col-xs-6 col-sm-8"><%= link_to m.nombre, mision_path(m.id), :class => "h2" %><br>
+                        <p><%= m.descripcion %></p>
+                      </div>
+                      <div class="col-xs-3 col-sm-2"><% if @eslider==true %> Quitar <%end%></div>
+                    </div>
+                    <% end %>
+                    <% if @eslider==true %>
+                      Agregar misión
+                    <% end %>
                 </div>
                 <div id="mu" class="tab-pane fade">
                   <h3>Muro</h3>
@@ -53,7 +70,18 @@
                 </div>
                 <div id="in" class="tab-pane fade">
                   <h3>Integrantes</h3>
-                    <%=   %>
+                    <% @integrantes.each do |i| %>
+                    <div class="row">
+                      <div class="col-xs-3 col-sm-2"><%= image_tag i.image.url(:med), :class => "img-circle img-responsive" %></div>
+                      <div class="col-xs-6 col-sm-8"><%= link_to i.nombre, "logrosdelusuario", :class => "h2" %><br>
+                        <p><%= i.email %></p>
+                      </div>
+                      <div class="col-xs-3 col-sm-2"><% @administradores.each do |a| %><% if a.id == i.id %>¡LÍDER! <%end%><%end%></div>
+                    </div>
+                    <% end %>
+                    <% if @eslider==true %>
+                      Agregar misión
+                    <% end %>
                 </div>
                 <div id="lo" class="tab-pane fade">
                   <h3>Logros</h3>

@@ -1,24 +1,51 @@
 class GruposController < ApplicationController
   before_action :set_grupo, only: [:show, :edit, :update, :destroy]
 
+  before_action :validarusuario
+ 
+  
+
+
+
   # GET /grupos
   # GET /grupos.json
   def index
     @grupos = Grupo.all
+    #Requerir id y nombre de usuarios, id y nombre de misiones
+
+    #condición para mostrar: que el usuario pertenezca al grupo
+
+
   end
 
   # GET /grupos/1
   # GET /grupos/1.json
   def show
+    set_grupo
+    ext_params
+
+      @eslider = false;
+      @administradores.each do |a|
+        if current_usuario.id == a.id
+          @eslider=true;
+        end
+      end
+    #requerir usuarios integrantes (su id, nombre, imagen)
+
+    #requerir posts del grupo
+
+    #requerir misiones del grupo
   end
 
   # GET /grupos/new
   def new
     @grupo = Grupo.new
+    #requerir usuarios
   end
 
   # GET /grupos/1/edit
   def edit
+    #permitir sólo para líderes de grupo
   end
 
   # POST /grupos
@@ -67,8 +94,19 @@ class GruposController < ApplicationController
       @grupo = Grupo.find(params[:id])
     end
 
+    def ext_params
+      @misiones = Mision.where(id: @grupo.misiones)
+      @integrantes = Usuario.where(id: @grupo.integrantes)
+      @administradores = Usuario.where(id: @grupo.administradores)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def grupo_params
       params.require(:grupo).permit(:nombre, :descripcion, :integrantes, :misiones, :administradores, :abierto)
     end
+     def validarusuario
+      unless usuario_signed_in?
+        redirect_to new_usuario_session_path, notice: "Hay que iniciar sesión para acceder a esta sección."
+      end
+    end 
+
 end

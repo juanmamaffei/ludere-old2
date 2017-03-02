@@ -1,7 +1,7 @@
 class MisionsController < ApplicationController
   before_action :set_mision, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :validarusuario
-  before_action :validaradmin, except: [:show, :index, :upvote, :downvote]
+  before_action :validaradmin, except: [:show, :index, :upvote, :downvote, :mismisiones]
 
 
   # GET /misions
