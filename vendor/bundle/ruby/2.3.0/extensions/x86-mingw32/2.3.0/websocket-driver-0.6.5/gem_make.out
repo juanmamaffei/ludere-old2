@@ -1,0 +1,23 @@
+current directory: C:/Sites/Ludere/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+C:/RailsInstaller/Ruby2.3.0/bin/ruby.exe -r ./siteconf20170320-4032-1fzwshd.rb extconf.rb
+Ignoring bcrypt-3.1.11 because its extensions are not built.  Try: gem pristine bcrypt --version 3.1.11
+Ignoring byebug-9.0.6 because its extensions are not built.  Try: gem pristine byebug --version 9.0.6
+Ignoring nokogiri-1.7.0.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.7.0.1
+Ignoring sqlite3-1.3.13 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.13
+creating Makefile
+
+current directory: C:/Sites/Ludere/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+make: [clean-static] Error 53 (ignored)
+make: [clean] Error 53 (ignored)
+
+current directory: C:/Sites/Ludere/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+generating websocket_mask-i386-mingw32.def
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+make: [websocket_mask.so] Error 53 (ignored)
+
+current directory: C:/Sites/Ludere/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20170320-4032-uw0730

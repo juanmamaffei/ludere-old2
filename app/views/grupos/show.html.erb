@@ -1,48 +1,30 @@
 <p id="notice"><%= notice %></p>
+ <div class="row">
+      <div class="col-xs-12">
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @grupo.nombre %>
-</p>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title"><%= @grupo.nombre %> -  <% if @grupo.abierto? %>
+  <strong>Grupo abierto</strong>
+  <% else %>
+<strong>Grupo cerrado</strong>
+<%end %></h2>
 
-<p>
-  <strong>Descripcion:</strong>
+
+        </div>
+<div class="panel-body">
+<div class="col-xs-12 col-sm-6">
+<%= image_tag @grupo.image.url(:large), :class => "img-rounded" %></div>
+<div class="col-xs-12 col-sm-6">
+   <p>
   <%= @grupo.descripcion %>
-</p>
+</p>       
 
-<p>
-  <strong>Integrantes:</strong>
-  <%= @grupo.integrantes %>
-  <% @integrantes.each do |i| %>
-    <%= i.email %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Misiones:</strong>
-  <%= @grupo.misiones %>
-    <% @misiones.each do |i| %>
-    <%= i.nombre %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Administradores:</strong>
-  <%= @grupo.administradores %>
-</p>
-
-<p>
-  <strong>Abierto:</strong>
-  <%= @grupo.abierto %>
-</p>
-
-<%= link_to 'Edit', edit_grupo_path(@grupo) %> |
-<%= link_to 'Back', grupos_path %>
-
+</div></div></div>
 <div class="row"><div class="col-xs-12">
 
               <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#mi">Misiones</a></li>
+                <li class="active"><a data-toggle="tab" href="#mi">Eventos</a></li>
                 <li><a data-toggle="tab" href="#mu">Muro</a></li>
                 <li><a data-toggle="tab" href="#in">Integrantes</a></li>
                 <li><a data-toggle="tab" href="#lo">Logros</a></li>
@@ -50,7 +32,7 @@
 
               <div class="tab-content panel">
                 <div id="mi" class="tab-pane fade in active">
-                                    
+                    <h3>Misiones</h3>
                     <% @misiones.each do |m| %>
                     <div class="row">
                       <div class="col-xs-3 col-sm-2"><%= image_tag m.image.url(:med), :class => "img-circle img-responsive" %></div>
@@ -63,10 +45,21 @@
                     <% if @eslider==true %>
                       Agregar misión
                     <% end %>
+                    <h3>Eventos</h3>
                 </div>
                 <div id="mu" class="tab-pane fade">
                   <h3>Muro</h3>
-                    <%=   %>
+                    <%= render "posts/form"  %>
+                  <% @grupo.posts.each do |post| %>
+                  <div class="posteo">
+                    <%= image_tag post.usuario.image.url(:med), :class => "img-circle img-responsive" %><strong><%= post.usuario.email %></strong> dijo:
+                    <p>
+                    <%= post.contenido %>
+                    </p>
+                    Denunciar | Me gusta
+                  </div>
+                  <% end %>
+                  
                 </div>
                 <div id="in" class="tab-pane fade">
                   <h3>Integrantes</h3>
@@ -74,13 +67,13 @@
                     <div class="row">
                       <div class="col-xs-3 col-sm-2"><%= image_tag i.image.url(:med), :class => "img-circle img-responsive" %></div>
                       <div class="col-xs-6 col-sm-8"><%= link_to i.nombre, "logrosdelusuario", :class => "h2" %><br>
-                        <p><%= i.email %></p>
+                        <p><%= i.nombre %></p>
                       </div>
                       <div class="col-xs-3 col-sm-2"><% @administradores.each do |a| %><% if a.id == i.id %>¡LÍDER! <%end%><%end%></div>
                     </div>
                     <% end %>
                     <% if @eslider==true %>
-                      Agregar misión
+                      Agregar jugador
                     <% end %>
                 </div>
                 <div id="lo" class="tab-pane fade">

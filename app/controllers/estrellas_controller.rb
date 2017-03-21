@@ -23,7 +23,7 @@ class EstrellasController < ApplicationController
 
 		 		respond_to do |format|
 				    if @estrella.save
-				        format.html { redirect_to misions_path } #Redireccionar al objetivo
+				        format.html { redirect_to  mision_objetivo_path(aux[:idobjetivo_id]) } #Redireccionar al objetivo
 				    else
 				        format.html { render :queonda, notice: 'Hubo un error' } #Redireccionar a página de error
 				    end
@@ -46,7 +46,7 @@ class EstrellasController < ApplicationController
 		 	
 		 		respond_to do |format|
 				    if @estrella.save
-				        format.html { redirect_to misions_path, notice: 'Se dio una estrella correctamente' } #Redireccionar al objetivo
+				        format.html { redirect_to mision_objetivo_path(id: params[:idobjetivo_id], mision_id: params[:mision_id]), notice: '¡Felicitaciones! Obtuviste tu primer estrella en el objetivo' } #Redireccionar al objetivo
 				    else
 				        format.html { render :queonda, notice: 'Hubo un error' } #Redireccionar a página de error
 				    end

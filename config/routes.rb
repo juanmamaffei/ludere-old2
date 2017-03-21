@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+ 
+  patch 'grupos/agregarusuario', to: 'grupos#agregarusuario'
+  put 'grupos/agregarusuario', to: 'grupos#agregarusuario'
   
   resources :grupos do
     resources :posts
@@ -17,6 +20,10 @@ Rails.application.routes.draw do
   patch 'usuarios/darestrellas', to: 'estrellas#darestrellas'
   put 'usuarios/darestrellas', to: 'estrellas#darestrellas'
   
+
+
+
+
   resources :misions do
   	resources :objetivos
   	member do

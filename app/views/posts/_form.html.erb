@@ -1,14 +1,10 @@
-<%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
+<%= form_for([@grupo, @post]) do |f| %>
+  <% if @post.errors.any? %>
+  <%= pluralize(@post.errors.count, "error") %>
+  <% end %>
+  <div class="form-group">
+    <%= f.text_area :contenido, placeholder: "¿Qué estás pensando?", class: "form-control" %>
 
-  <div class="form-inputs">
-    <%= f.association :grupo %>
-    <%= f.association :usuario %>
-    <%= f.input :respuesta %>
-    <%= f.input :contenido %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit :Postear, class: "btn btn-primary" %>
   </div>
 <% end %>

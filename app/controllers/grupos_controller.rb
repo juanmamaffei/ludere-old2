@@ -33,7 +33,7 @@ class GruposController < ApplicationController
     #requerir usuarios integrantes (su id, nombre, imagen)
 
     #requerir posts del grupo
-
+    @post = Post.new
     #requerir misiones del grupo
   end
 
@@ -78,6 +78,31 @@ class GruposController < ApplicationController
     end
   end
 
+  def agregarusuario
+    #En @grupo se encuentran los datos del grupo seleccionado.
+    @grupo = Grupo.find_by(id: params[:id])
+
+
+    #Se obtiene el array de integrantes y se incluye el id del usuario al final del mismo
+    @grupo.integrantes << current_usuario.id
+
+
+    #A menos que el grupo sea abierto, se incluirá el id del usuario a la lista de revisión (para que luego sea aceptado por el ĺíder)
+    unless @grupo.abierto?
+      @grupo.revision << current_usuario.id
+    end
+
+
+
+    respond_to do |format|
+            if @grupo.save
+                format.html { redirect_to grupo_path(id: params[:id]), notice: 'Ahora participás del grupo'} #Redireccionar al objetivo
+            else
+                format.html { redirect_to grupos_path, notice: 'Hubo un error' } #Redireccionar a página de error
+            end
+          end
+  end
+
   # DELETE /grupos/1
   # DELETE /grupos/1.json
   def destroy
@@ -101,7 +126,7 @@ class GruposController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def grupo_params
-      params.require(:grupo).permit(:nombre, :descripcion, :integrantes, :misiones, :administradores, :abierto)
+      params.require(:grupo).permit(:nombre, :descripcion, :integrantes, :misiones, :administradores, :abierto, :image, :revision)
     end
      def validarusuario
       unless usuario_signed_in?

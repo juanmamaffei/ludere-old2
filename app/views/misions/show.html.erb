@@ -129,11 +129,17 @@ Objetivos
 </div>
 
 
+<% if @objetivos.length==0 %>
+<% progreso = 0 %>
+<% progresoexc = 0 %>
+<% vistos = 0 %>
+<% else %>
 
 <% progreso = (100 * nest2 / @objetivos.length) %>
 <% progresoexc = (100 * nest3 / @objetivos.length) %>
 
 <% vistos = (100 * nest1 / @objetivos.length) %>
+<% end %>
 <h1 data-toggle="tooltip" title="Para cumplir la misión, deberás obtener al menos dos estrellas en TODOS los objetivos">Progresos personales</h1>
 <div class="row">
 <div class="col-xs-12 col-sm-4">

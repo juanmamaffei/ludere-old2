@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Grupos</h1>
+<h1>Grupos </h1>
 
 <table>
   <thead>
@@ -35,3 +35,87 @@
 <br>
 
 <%= link_to 'New Grupo', new_grupo_path %>
+
+
+<div class="transitions-enabled clearfix masonry" >
+
+<% if current_usuario.es_docente? %>
+    <div class="box col1 masonry-brick">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Crear nuevo grupo</h2>
+    </div>
+   <div class="panel-body">
+    <%= link_to '+', new_grupo_path, :class =>"btn btn-success" %>
+   </div>
+   </div></div>
+
+<% end %>
+
+
+
+
+    <% @grupos.each do |grupo| %>
+<div class="box col3 masonry-brick">
+    <div class="panel panel-default"> <!-- Agregar distinción de col* según cantidad de visitas -->
+    <div class="panel-heading">
+        <h2 class="panel-title"><%= grupo.nombre %></h2>
+    </div>
+    <div class="panel-body">
+<%= image_tag grupo.image.url(:large), :class => "img-rounded" %><br>
+<small>Misiones: <i><%= grupo.misiones %></i></small>
+<p><%= grupo.descripcion %></p>
+
+
+  <% esmiembro = false %>
+  <% grupo.integrantes.each do |i| %>
+   
+  <%  if current_usuario.id==i %>
+  <%    esmiembro = true %>
+  <%  end %>
+  <% end %>
+
+
+<% if esmiembro==true %>
+    
+    <% if grupo.abierto? %>
+       <%= link_to "Ver grupo", grupo, :class => "btn btn-default"  %>
+    <% else %>
+      <% enrevision = false %>
+      <% grupo.revision.each do |r| %>
+          <%  if current_usuario.id==r %>
+              <%    enrevision = true %>
+          <%  end %>
+      <% end %>
+        
+        <% if enrevision==true %>
+          "Solicitud enviada"
+        <% else %>
+          <%= link_to "Ver grupo", grupo, :class => "btn btn-default"  %>
+          <%= enrevision %>
+        <% end %>
+
+     <% end %>
+
+     <% else %>
+<%= link_to "Enviar solicitud de participación", grupos_agregarusuario_path("id"=>grupo.id), :method => :patch, :class => "btn btn-default"  %>
+<% end %>
+
+<% if current_usuario.es_docente? %>
+
+  <%= link_to "Editar", edit_grupo_path(grupo), :class => "btn btn-warning"  %>
+  <%= link_to "Eliminar", grupo, method: :delete, data: { confirm: "¿Estás seguro que deseás eliminar este grupo?" }, class: "btn btn-danger"  %>
+
+<% end %>
+
+
+
+
+    </div>
+    </div>
+</div>
+
+    <% end %>
+
+
+</div>

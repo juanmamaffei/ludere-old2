@@ -110,7 +110,7 @@
 </div>
   <% if @estrella==nil %>
     <div class="row"><div id='seter' style='display:none;'>
-    <% e1={"idobjetivo_id"=>@objetivo.id}  %>
+    <% e1={"idobjetivo_id"=>@objetivo.id, "mision_id"=>@mision.id}  %>
     <%= link_to "Reclamar primera estrella en el objetivo", autoes_path(e1), :method => :create %><br>
     <i class="fa fa-star fa-3x" aria-hidden="true" data-toggle="tooltip" title="¡Obtener estrella!"></i>
     </div></div>
