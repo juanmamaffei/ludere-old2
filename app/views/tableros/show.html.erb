@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @tablero.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @tablero.descripcion %>
+</p>
+
+<p>
+  <strong>Horainicio:</strong>
+  <%= @tablero.horainicio %>
+</p>
+
+<p>
+  <strong>Horafin:</strong>
+  <%= @tablero.horafin %>
+</p>
+
+<p>
+  <strong>Puntos:</strong>
+  <%= @tablero.puntos %>
+</p>
+
+<p>
+  <strong>Abierto:</strong>
+  <%= @tablero.abierto %>
+</p>
+
+<p>
+  <strong>E1:</strong>
+  <%= @tablero.e1 %>
+</p>
+
+<p>
+  <strong>E2:</strong>
+  <%= @tablero.e2 %>
+</p>
+
+<p>
+  <strong>E3:</strong>
+  <%= @tablero.e3 %>
+</p>
+
+<p>
+  <strong>Miembros:</strong>
+  <%= @tablero.miembros %>
+</p>
+
+<p>
+  <strong>Cronometro:</strong>
+  <%= @tablero.cronometro %>
+</p>
+
+<%= link_to 'Edit', edit_tablero_path(@tablero) %> |
+<%= link_to 'Back', tableros_path %>

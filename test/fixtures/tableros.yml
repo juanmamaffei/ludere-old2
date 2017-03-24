@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  descripcion: MyText
+  horainicio: 2017-03-21 01:08:02
+  horafin: 2017-03-21 01:08:02
+  puntos: false
+  abierto: false
+  e1: MyText
+  e2: MyText
+  e3: MyText
+  miembros: MyText
+  cronometro: 2017-03-21 01:08:02
+
+two:
+  nombre: MyString
+  descripcion: MyText
+  horainicio: 2017-03-21 01:08:02
+  horafin: 2017-03-21 01:08:02
+  puntos: false
+  abierto: false
+  e1: MyText
+  e2: MyText
+  e3: MyText
+  miembros: MyText
+  cronometro: 2017-03-21 01:08:02

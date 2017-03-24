@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317185540) do
+ActiveRecord::Schema.define(version: 20170321040802) do
 
   create_table "estrellas", force: :cascade do |t|
     t.integer  "idusuario_id"
@@ -77,6 +77,22 @@ ActiveRecord::Schema.define(version: 20170317185540) do
     t.datetime "updated_at", null: false
     t.index ["grupo_id"], name: "index_posts_on_grupo_id"
     t.index ["usuario_id"], name: "index_posts_on_usuario_id"
+  end
+
+  create_table "tableros", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.datetime "horainicio"
+    t.datetime "horafin"
+    t.boolean  "puntos"
+    t.boolean  "abierto"
+    t.text     "e1"
+    t.text     "e2"
+    t.text     "e3"
+    t.text     "miembros"
+    t.datetime "cronometro"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "usuarios", force: :cascade do |t|

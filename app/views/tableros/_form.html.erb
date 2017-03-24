@@ -1,0 +1,79 @@
+<%= simple_form_for(@tablero) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre %>
+    <%= f.input :descripcion %>
+    <%= f.input :horainicio %>
+    <%= f.input :horafin %>
+    <%= f.input :puntos %>
+    <%= f.input :abierto %>
+    <%= f.input :e1 %>
+    <%= f.input :e2 %>
+    <%= f.input :e3 %>
+    
+    <input type="button" value="Agregar miembro" id="agregarCampo">
+
+ 
+     <div class="table-responsive">       
+   <table id="fconte" border="1">
+      <tbody>
+        <tr>
+          <th>ID del usuario</th>
+          <th>Grupo</th>
+          <th>Descripción</th>
+          <th>E1</th>
+          <th>E2</th>
+          <th>E3</th>
+          <th>Puntaje extra</th>
+        </tr>
+<!--        
+<tr><td><input type="text" name="idusuario[1]" id="idusuario" placeholder="ID del usuario a agregar"/></td><td><input type="text" name="grupo[1]" id="idgrupo" placeholder="Número del GRUPO (0 si el trabajo es individual)"/></td><td><input type="text" name="descripcion[1]" id="descripcion" placeholder="Descripción"/></td><td><select name="e1[1]" placeholder="Estrella 1"><option>No</option><option>Si</option></select></td><td><select name="e2[1]" placeholder="Estrella 2"><option>No</option><option>Si</option></select></td><td><select name="e3['+FieldCount+']" placeholder="Estrella 3"><option>No</option><option>Si</option></select></td><td><input type="number" name="puntaje[1]" id="idgrupo" placeholder="Puntaje extra"/></td><td><a href="#" class="eliminar">&times;</a></td></tr>
+-->
+
+      </tbody>
+    </table> </div>           
+
+        
+    <%= f.input :miembros %>
+
+    <%= f.input :cronometro %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var MaxInputs       = 50; //Número Maximo de Campos
+    var contenedor       = $("#fconte"); //ID del contenedor
+    var AddButton       = $("#agregarCampo"); //ID del Botón Agregar
+
+    //var x = número de campos existentes en el contenedor
+    var x = $("#fconte").length + 1;
+    var FieldCount = x-1; //para el seguimiento de los campos
+
+    $(AddButton).click(function (e) {
+        if(x <= MaxInputs) //max input box allowed
+        {
+            FieldCount++;
+            //agregar campo
+            $(fconte).append('<tr><td><input type="text" name="idusuario['+FieldCount+']" id="idusuario" placeholder="ID del usuario a agregar"/></td><td><input type="text" name="grupo['+FieldCount+']" id="idgrupo" placeholder="Número del GRUPO (0 si el trabajo es individual)"/></td><td><input type="text" name="descripcion['+FieldCount+']" id="descripcion" placeholder="Descripción"/></td><td><select name="e1['+FieldCount+']" placeholder="Estrella 1"><option>No</option><option>Si</option></select></td><td><select name="e2['+FieldCount+']" placeholder="Estrella 2"><option>No</option><option>Si</option></select></td><td><select name="e3['+FieldCount+']" placeholder="Estrella 3"><option>No</option><option>Si</option></select></td><td><input type="number" name="puntaje['+FieldCount+']" id="idgrupo" placeholder="Puntaje extra"/></td><td><a href="#" class="eliminar">&times;</a></td></tr>');
+            x++; //text box increment
+        }
+        return false;
+    });
+
+    $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent('tr').remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+});
+</script>
+-->

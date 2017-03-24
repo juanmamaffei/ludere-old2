@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tableros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Horainicio</th>
+      <th>Horafin</th>
+      <th>Puntos</th>
+      <th>Abierto</th>
+      <th>E1</th>
+      <th>E2</th>
+      <th>E3</th>
+      <th>Miembros</th>
+      <th>Cronometro</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tableros.each do |tablero| %>
+      <tr>
+        <td><%= tablero.nombre %></td>
+        <td><%= tablero.descripcion %></td>
+        <td><%= tablero.horainicio %></td>
+        <td><%= tablero.horafin %></td>
+        <td><%= tablero.puntos %></td>
+        <td><%= tablero.abierto %></td>
+        <td><%= tablero.e1 %></td>
+        <td><%= tablero.e2 %></td>
+        <td><%= tablero.e3 %></td>
+        <td><%= tablero.miembros %></td>
+        <td><%= tablero.cronometro %></td>
+        <td><%= link_to 'Show', tablero %></td>
+        <td><%= link_to 'Edit', edit_tablero_path(tablero) %></td>
+        <td><%= link_to 'Destroy', tablero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tablero', new_tablero_path %>

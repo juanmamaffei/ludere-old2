@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :tableros
   patch 'grupos/agregarusuario', to: 'grupos#agregarusuario'
   put 'grupos/agregarusuario', to: 'grupos#agregarusuario'
   

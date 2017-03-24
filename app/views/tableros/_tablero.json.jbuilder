@@ -1,0 +1,2 @@
+json.extract! tablero, :id, :nombre, :descripcion, :horainicio, :horafin, :puntos, :abierto, :e1, :e2, :e3, :miembros, :cronometro, :created_at, :updated_at
+json.url tablero_url(tablero, format: :json)
